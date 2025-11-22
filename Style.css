@@ -1,0 +1,124 @@
+/* --- Estilos Gerais --- */
+body {
+    background-color: burlywood;
+    padding-bottom: 80px; /* Adiciona espaço para o rodapé fixo. Ajustado na media query. */
+    font-family: sans-serif; /* Uma fonte padrão para melhor legibilidade */
+    margin: 0;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+h1 {
+    text-align: center;
+    font-size: 2em; /* Tamanho relativo */
+}
+
+.search-container {
+    display: flex;
+    justify-content: flex-start;
+    margin-bottom: 20px;
+}
+
+.search-container input {
+    width: 250px;
+}
+
+/* --- Estilos das Seções --- */
+#quem-somos {
+    padding: 20px;
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+#galeria {
+    padding: 20px 0;
+}
+
+.section-title {
+    text-align: center;
+}
+
+/* --- Rodapé --- */
+footer {
+    position: fixed;
+    bottom: 0;
+    left: 0; /* Garante que ocupe a tela toda */
+    width: 100%;
+    background-color: burlywood;
+}
+
+/* --- Estilos da Galeria/Carrossel --- */
+.slider-container {
+    max-width: 800px;
+    margin: 20px auto;
+    overflow: hidden; /* Esconde as partes das imagens que estão fora do container */
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.slider {
+    display: flex;
+    width: 500%; /* 100% para cada uma das 5 imagens (4 + 1 repetida) */
+    animation: slide 20s linear infinite; /* Animação chamada 'slide', dura 20s, velocidade constante, loop infinito */
+}
+
+.slider img {
+    width: 20%; /* Cada imagem ocupa 1/5 do espaço do slider */
+    flex-shrink: 0; /* Impede que as imagens encolham */
+}
+
+/* Animação do carrossel */
+@keyframes slide {
+    0% { transform: translateX(0%); } /* Posição inicial */
+    20% { transform: translateX(0%); } /* Pausa na imagem 1 */
+    25% { transform: translateX(-20%); } /* Move para a imagem 2 */
+    45% { transform: translateX(-20%); } /* Pausa na imagem 2 */
+    50% { transform: translateX(-40%); } /* Move para a imagem 3 */
+    70% { transform: translateX(-40%); } /* Pausa na imagem 3 */
+    75% { transform: translateX(-60%); } /* Move para a imagem 4 */
+    95% { transform: translateX(-60%); } /* Pausa na imagem 4 */
+    100% { transform: translateX(-80%); } /* Move de volta para a "primeira" imagem para o loop */
+}
+
+footer ul {
+    display: flex;
+    justify-content: center;
+    list-style-type: none;
+    padding: 0;
+    margin: 10px 0;
+    gap: 20px;
+}
+
+/* --- REGRAS DE RESPONSIVIDADE (PARA CELULARES) --- */
+@media (max-width: 600px) {
+    h1 {
+        font-size: 1.5em; /* Diminui o título principal */
+    }
+
+    .search-container {
+        flex-direction: column; /* Coloca o input em cima do botão */
+        align-items: center; /* Centraliza os itens */
+        gap: 10px; /* Adiciona um espaço entre o input e o botão */
+    }
+
+    .search-container input,
+    .search-container button {
+        width: 90%; /* Faz com que ocupem quase toda a largura */
+        box-sizing: border-box; /* Garante que o padding não aumente a largura */
+    }
+
+    .slider-container {
+        /* Remove a largura máxima para ocupar o espaço disponível,
+           com pequenas margens laterais herdadas do body */
+        max-width: 100%;
+    }
+
+    footer ul {
+        gap: 15px; /* Diminui o espaço entre os links no rodapé */
+    }
+
+    body {
+        padding-bottom: 60px; /* Diminui o espaço para o rodapé, se necessário */
+    }
+}
